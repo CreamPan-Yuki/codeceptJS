@@ -1,6 +1,6 @@
 Feature('こっそり退勤');
 
-Scenario('こっそり退勤して、時間外申請', ({ I }) => {
+Scenario('こっそり退勤して、時間外申請', async ({ I }) => {
     I.amOnPage('https://www.kinta.ne.jp/kinta2/web_sp/');
     I.fillField('txtCode', process.env.LOGIN_COMPANY_CODE);
     I.fillField('txtEmpCode', process.env.LOGIN_USERID);
@@ -11,15 +11,19 @@ Scenario('こっそり退勤して、時間外申請', ({ I }) => {
     I.click('退勤');
 
     I.see('位置情報を取得します。');
-    // I.fillField('clockTime', '19:28');
+    // I.fillField('clockTime', '19:25');
+
+    I.acceptPopup(); 
 
     I.click('退勤');
-    
-    var pages = browser.pages();
-    var popupwin = pages[pages.length - 1];
-    popupwin.click('ブロック');
+
+    // var pages = browser.pages();
+    // var popupwin = pages[pages.length - 1];
+    // popupwin.click('ブロック');
 
     I.see('退勤登録が完了しました。');
+
+    I.click('TOPへ')
 
     I.see('メニュー');
     I.click('申請');
@@ -33,9 +37,11 @@ Scenario('こっそり退勤して、時間外申請', ({ I }) => {
     
     I.click('登録');
 
-    var pages = browser.pages();
-    var popupwin = pages[pages.length - 1];
-    popupwin.click('OK');
+    // var pages = browser.pages();
+    // var popupwin = pages[pages.length - 1];
+    // popupwin.click('OK');
 
     I.see('以下の内容で登録しました。');
+
+    I.wait(300)
 });

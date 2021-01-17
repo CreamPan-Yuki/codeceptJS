@@ -30,7 +30,7 @@ Scenario('こっそり退勤して、時間外申請', async ({ I }) => {
             // }
         } else {
         I.see('作業実績')
-        inputWorkingHours(I)
+            inputWorkingHours(I)
         }
     }
 
@@ -39,7 +39,6 @@ Scenario('こっそり退勤して、時間外申請', async ({ I }) => {
 });
 
 function inputWorkingHours(I) {
-    I.click('#row1')
     I.see('プロジェクト')
 
     I.selectOption('selPj', process.env.WORKING_HOURS_PROJECT_CODE);
@@ -49,8 +48,9 @@ function inputWorkingHours(I) {
     I.click('登録')
     I.see('作業時間登録確認')
 
+    I.acceptPopup()
     I.click('確定')
-    // I.click('OK')
+    
     I.see('対象年月日')
 }
 
@@ -68,4 +68,6 @@ function inputMonthClosing(I) {
     I.click('登録')
 
     I.see('月締め申請を完了しました。')
+
+    I.wait(30)
 }
