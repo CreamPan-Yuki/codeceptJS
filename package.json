@@ -1,7 +1,28 @@
 {
+  "name": "codeceptjs-workspace",
+  "version": "1.0.0",
+  "description": "自動化ツール",
+  "main": "index.js",
+  "scripts": {
+    "allure-clear-serve": "run-s -c clear test-for-allure allure-serve",
+    "allure-clear-generate": "run-s -c clear test-for-allure allure-generate",
+    "allure-start": "run allue-start",
+    "reg": "node reg-suit/scripts/build.js"
+  },
+  "author": "creamcrown",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^8.0.0",
+    "fs-extra": "^8.0.1",
+    "npm-run-all": "^4.1.5",
+    "opener": "^1.5.1",
+    "reg-suit": "^0.7.17",
+    "rimraf": "^2.6.3",
+    "runjs": "^4.4.2"
+  },
   "dependencies": {
-    "codeceptjs": "^3.0.2",
-    "dotenv": "^8.2.0",
-    "puppeteer": "^5.5.0"
+    "allure-commandline": "^2.9.0",
+    "codeceptjs": "2.1.0",
+    "puppeteer": "^1.17.0"
   }
 }
